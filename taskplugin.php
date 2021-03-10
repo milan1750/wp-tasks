@@ -2,10 +2,12 @@
 
 namespace taskplugin;
 
+use taskplugin\includes\TaskPluginInitializer;
+
 /**
  * Plugin Name:       Tasks Plugin
  * Plugin URI:        https://example.com/firstplugin
- * Description:       Plugin for displaying custom adds on pages
+ * Description:       Tasks under onboarding processes
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
@@ -16,24 +18,20 @@ namespace taskplugin;
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-class TaskPlugin {
-    function __construct() {
-        if( !defined( 'TASK_PLUGIN_DIR_PATH' ) ) {
-            define( 'TASK_PLUGIN_PATH' , plugin_dir_path( __FILE__ ) );
-        }
 
-        if( !defined( 'TASK_PLUGIN_URL' ) ) {
-            define( 'TASK_PLUGIN_URL' , plugin_dir_url( __FILE__ ) );
-        }
-
-        if( !defined( 'TASK_PLUGIN_FILE' ) ) {
-            define( 'TASK_PLUGIN_FILE' ,  __FILE__ );
-        }
-    }
-
-    public static function initialize () {
-        return true;
-    } 
+defined('ABSPATH') || exit;
+if ( ! defined( 'FP_PLUGIN_FILE' ) ) {
+    define( 'FP_PLUGIN_FILE', __FILE__ );
 }
 
-$GLOBALS['task'] = TaskPlugin::initialize();
+if( ! defined( 'FP_PLUGIN_PATH' ) ) {
+    define( 'FP_PLUGIN_PATH', plugin_dir_path(__FILE__) );
+}
+
+if( ! defined( 'FP_PLUGIN_URL' ) ) {
+    define( 'FP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
+
+include (FP_PLUGIN_PATH. 'includes/taskplugin_initializer.php');
+
+$GLOBALS['task'] = TaskPluginInitializer::instance();

@@ -7,13 +7,24 @@ class TaskPluginInitializer {
     protected static $instance = null; 
 
     function __construct() {
-        // echo "Constructor running for Task Plugin Initializer";
+        $this->actions();
+        $this->init();
+        $this->includes();
     }
 
     public static function instance() {
-        if(!self::$instance) {
-            self::$instance = self::class; 
+        if ( is_null( self::$instance ) ) {
+            self::$instance = new self();
         }
         return self::$instance;
+    }
+
+    protected function actions() {
+    }
+
+    protected function init() {
+    }
+
+    protected function includes() {
     }
 }
