@@ -2,14 +2,16 @@
 
 namespace taskplugin\includes;
 
+use taskplugin\includes\setting\Setting;
+
 class TaskPluginInitializer {
 
     protected static $instance = null; 
 
     function __construct() {
+        $this->includes();
         $this->actions();
         $this->init();
-        $this->includes();
     }
 
     public static function instance() {
@@ -20,11 +22,13 @@ class TaskPluginInitializer {
     }
 
     protected function actions() {
+        new Setting;
     }
 
     protected function init() {
     }
 
     protected function includes() {
+        include_once TASK_PLUGIN_PATH . '/includes/setting/setting.php';
     }
 }

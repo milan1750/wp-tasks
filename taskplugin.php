@@ -20,18 +20,18 @@ use taskplugin\includes\TaskPluginInitializer;
 
 
 defined('ABSPATH') || exit;
-if ( ! defined( 'FP_PLUGIN_FILE' ) ) {
-    define( 'FP_PLUGIN_FILE', __FILE__ );
+if ( ! defined( 'TASK_PLUGIN_FILE' ) ) {
+    define( 'TASK_PLUGIN_FILE', __FILE__ );
 }
 
-if( ! defined( 'FP_PLUGIN_PATH' ) ) {
-    define( 'FP_PLUGIN_PATH', plugin_dir_path(__FILE__) );
+if( ! defined( 'TASK_PLUGIN_PATH' ) ) {
+    define( 'TASK_PLUGIN_PATH', plugin_dir_path(__FILE__) );
 }
 
-if( ! defined( 'FP_PLUGIN_URL' ) ) {
-    define( 'FP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if( ! defined( 'TASK_PLUGIN_URL' ) ) {
+    define( 'TASK_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 }
 
-include (FP_PLUGIN_PATH. 'includes/taskplugin_initializer.php');
+include (TASK_PLUGIN_PATH. 'includes/taskplugin_initializer.php');
 
 $GLOBALS['task'] = TaskPluginInitializer::instance();
